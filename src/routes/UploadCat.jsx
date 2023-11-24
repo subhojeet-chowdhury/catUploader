@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useCatApi from "../hooks/useCatApi";
 
@@ -33,6 +34,7 @@ const ErrorText = styled.p`
 `;
 
 function UploadCat() {
+  const navigate = useNavigate();
   const { error, uploadCat } = useCatApi();
   const [file, setFile] = useState(null);
 
@@ -56,6 +58,7 @@ function UploadCat() {
     console.log("Image uploaded successfully:", uploadedCat);
 
     // Redirect or perform other actions after successful upload
+    navigate("/");
   };
 
   return (
